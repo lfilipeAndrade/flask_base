@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link href="/static/assets/css/login.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" charset="utf-8"></script>
+    <title>Indicadores de produção</title>
+</head>
+
+{% block content %}
+
+<body>
+    <section class="screen">
+        <section class="dados">
+            <div class="form">
+                <form role="form" class="form-login" autocomplete="off" method="post" action="">
+
+                    {{ form.hidden_tag() }}
+
+                    <h1>Bem vindo</h5>
+
+                        <div class="toast">
+                            <div class="toast-content">
+                                <i class="fas fa-solid fa-circle-exclamation exclamation"></i>
+                                <div class="message">
+                                    <span class="text text-1">Ocorreu um erro!</span>
+                                    <span class="text text-2">{{ msg | safe }}</span>
+                                </div>
+                            </div>
+                            <i class="fa-solid fa-xmark close"></i>
+                            <div class="progress"></div>
+                        </div>
+
+                        {% if msg %}
+
+                        <script src="/static/assets/js/toast.js"></script>
+
+                        {% endif %}
+
+                        <div class="input-box">
+                            {{ form.username(class="form-control") }}
+                            <label>Usuário</label>
+                        </div>
+
+                        <div class="input-box">
+                            {{ form.password(class="form-control", type="password") }}
+                            <label>Senha</label>
+                            <i class="fas fa-eye-slash show"></i>
+                        </div>
+
+                        <!--<a href="#">Esqueceu sua senha?</a>-->
+                        <button type="submit" name="login" class="toastButton" id="toastTrigger">ACESSAR</button>
+                </form>
+            </div>
+            <div class="register">
+                <a href="/registrar" id="acesso">Solicite seu acesso</a>
+            </div>
+        </section>
+        <section class="logo">
+            <img src="/static/assets/images/logoLogin.svg" alt="Imagem de fundo tela de login">
+        </section>
+
+    </section>
+
+    {% endblock content %}
+
+    <script src="/static/assets/js/login.js"></script>
+
+</body>
+
+</html>

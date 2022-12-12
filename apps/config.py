@@ -8,9 +8,15 @@ class Config(object):
     # Set up the App SECRET_KEY
     SECRET_KEY = config('SECRET_KEY', default='S#perS3crEt_007')
 
+    # Read a connection file, ex:(mysql://user:password@127.0.0.1:3306/bd_name)
+    with open('db_connection.txt', encoding='utf8') as f:
+        for line in f:
+            SQLALCHEMY_DATABASE_URI = line
+    
+    print(SQLALCHEMY_DATABASE_URI)
     # This will create a file in <app> FOLDER
-    #SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'db.sqlite3')
-    SQLALCHEMY_DATABASE_URI='mysql://{0}:{1}@{2}:{3}/{4}'.format('root', '#TIpl7362$', '127.0.0.1', '3306','avaliflex')
+    # SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'db.sqlite3')
+    # mysql://user:password@127.0.0.1:3306/bd_name
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 class ProductionConfig(Config):
